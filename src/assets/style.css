@@ -572,14 +572,15 @@ label.inline input { width: 7em; }
 .w-elegir .near-ctrl select { flex: 1; min-width: 0; }
 
 /* ================================================================ CuántoGasta Ayudas */
-.ay-hero { grid-template-columns: 1.35fr 1fr; }
+@media (min-width: 861px) { .ay-hero { grid-template-columns: 1.35fr 1fr; } }
 .ay-stats { display: grid; gap: 12px; position: relative; z-index: 1; align-content: start; }
 .ay-stat { background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .2); border-radius: 18px; padding: 14px 18px; display: flex; flex-direction: column; color: #fff; text-decoration: none; }
 .ay-stat:hover { background: rgba(255, 255, 255, .16); color: #fff; }
 .ay-stat span { font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: #d4d8fb; }
 .ay-stat strong { font-size: clamp(1.7rem, 5vw, 2.3rem); letter-spacing: -.03em; line-height: 1.15; }
 .ay-stat small { color: #d4d8fb; }
-@media (max-width: 860px) { .ay-hero .ay-stats { grid-template-columns: 1fr 1fr; } .ay-stat { padding: 12px 14px; } }
+@media (max-width: 860px) { .ay-hero .ay-stats { grid-template-columns: 1fr 1fr; } .ay-stat { padding: 12px 14px; } .ay-stat strong { font-size: 1.6rem; } }
+.finder, .finder-row, .finder label, .finder select, .finder input { min-width: 0; max-width: 100%; }
 
 /* buscador */
 .finder { margin: 18px 0 8px; }
