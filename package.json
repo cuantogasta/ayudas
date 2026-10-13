@@ -1,0 +1,8 @@
+{
+  "name": "cuantogasta-ayudas",
+  "private": true,
+  "type": "module",
+  "description": "Ayudas y subvenciones abiertas en España, con datos oficiales de la Base de Datos Nacional de Subvenciones. Sitio estático que se actualiza solo.",
+  "scripts": { "datos": "node src/fetch.mjs", "build": "node src/build.mjs", "check": "node tools/check.mjs" },
+  "engines": { "node": ">=20" }
+}
