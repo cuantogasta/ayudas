@@ -62,6 +62,7 @@ function tituloCorto(t) {
   s = s.replace(/\s*\(?BDNS[^)]*\)?\.?\s*$/i, '').replace(/[.;,\s]+$/, '');
   if (!/[«“]/.test(s)) s = s.replace(/[»”`]+$/, ''); // comillas de cierre sueltas
   s = s.charAt(0).toUpperCase() + s.slice(1);
+  if (String(t).length >= 254) s = `${s.replace(/\s+\S*$/, '').replace(/[\s,;:(«"“-]+$/, '')}…`; // la BDNS corta las descripciones a 255 caracteres
   return s.length > 8 ? s : limpia(t);
 }
 const corta = (s, n) => (s.length <= n ? s : `${s.slice(0, n).replace(/\s+\S*$/, '')}…`);
@@ -454,7 +455,7 @@ for (const c of conv) {
     ...(c.tema ? [['tag', 'Tema', esc(c.tema.n)]] : []),
     ...(c.sec.length ? [['briefcase', 'Sectores', esc(c.sec.map(limpia).join(', '))]] : []),
     ...(c.mrr || c.fondos.length ? [['flag', 'Fondos', esc([c.mrr ? 'Plan de Recuperación (Next Generation EU)' : '', ...c.fondos.map(limpia)].filter(Boolean).join(', '))]] : []),
-    ['doc', 'Título oficial', esc(c.t)],
+    ['doc', 'Título oficial', esc(c.t.length >= 254 ? `${c.t}…` : c.t)],
     ['info', 'Código BDNS', `${esc(c.id)} · registrada el ${fechaLarga(c.f)}`],
   ];
   const docs = c.docs.slice(0, 12).map(([id, desc, nombre]) => `<li><a href="${BDNS_DOC(id)}" rel="nofollow noopener" target="_blank">${icon('doc')}<span>${esc(desc || 'Documento')}<small>${esc(nombre)}</small></span></a></li>`).join('');
@@ -472,11 +473,12 @@ ${docs ? `<section class="card sec"><h2 class="h3">Documentos oficiales</h2><ul 
 <li><div><strong>Prepara la documentación y tu identificación digital</strong><p>Para presentarla por internet necesitas certificado digital, Cl@ve o DNI electrónico.</p></div></li>
 <li><div><strong>Preséntala ${e.hasta && e.k !== 'cerrada' ? `antes del ${fechaLarga(e.hasta)}${e.k === 'estimada' ? ' (fecha aproximada)' : ''}` : 'dentro del plazo'}</strong><p>${sede ? `En la <a href="${esc(sede)}" rel="nofollow noopener" target="_blank">sede electrónica de ${esc(c.org)}</a>` : `En la sede electrónica de ${esc(c.org)}`} o en un registro presencial. Guarda el justificante.</p></div></li>
 </ol></section>
+${AMAZON_DNIE()}
 </div>
 <aside><div class="plazo k-${e.k}"><p class="plazo-k">${badge(c)}</p><p class="plazo-big">${esc(plazoBig)}</p><p>${plazoTxt}</p>
 ${sede && e.k !== 'cerrada' ? `<a class="btn" href="${esc(sede)}" rel="nofollow noopener" target="_blank">${icon('ext')}<span>Ir a la sede electrónica</span></a>` : ''}
 <a class="btn btn-ghost" href="${BDNS_WEB(c.id)}" rel="nofollow noopener" target="_blank">${icon('shield')}<span>Ver la ficha oficial (BDNS)</span></a></div>
-${AMAZON_DNIE()}</aside>
+</aside>
 </div>
 <section class="sec"><div class="sec-head"><h2>Ayudas parecidas abiertas</h2></div>${lista(sim, 'Ahora mismo no hay ayudas parecidas abiertas.')}${a0 ? `<p class="more"><a class="link-arrow" href="${u(`/${a0.slug}/`)}">Todas las ayudas abiertas en ${esc(a0.n)} ${icon('arrow')}</a></p>` : ''}</section>
 <p class="aviso-fuente">Origen de los datos: Intervención General de la Administración del Estado, Base de Datos Nacional de Subvenciones (convocatoria ${esc(c.id)}, registrada el ${fechaLarga(c.f)}; consultada el ${fechaLarga(FECHA_DATOS)}). Esta web no es oficial: confirma siempre los plazos y requisitos en la convocatoria publicada en el boletín oficial.</p>`;

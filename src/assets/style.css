@@ -628,7 +628,7 @@ label.inline input { width: 7em; }
 .ay-head .ay-org { font-size: 1rem; }
 .ay-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 18px; align-items: start; margin-top: 14px; }
 .ay-grid > * { min-width: 0; }
-@media (max-width: 900px) { .ay-grid { grid-template-columns: 1fr; } .ay-grid .plazo { order: -1; } }
+@media (max-width: 900px) { .ay-grid { grid-template-columns: 1fr; } .ay-grid > aside { order: -1; } }
 .plazo { border-radius: var(--radius); padding: 18px 20px; border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
 .plazo-k { display: flex; align-items: center; gap: 8px; font-weight: 800; }
 .plazo-big { font-size: clamp(1.6rem, 5vw, 2.1rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.15; margin: 6px 0 2px; }
