@@ -256,6 +256,22 @@ const indice = abiertas.map((c) => [c.id, corta(c.titulo, 170), corta(c.org, 90)
 write('/datos/indice.json', JSON.stringify({ hoy: HOY, base: BASE, pub: PUBLICOS.map((p) => [p.id, p.corto, p.ico]), i: indice }));
 write('/datos/resumen.json', JSON.stringify({ fecha: FECHA_DATOS, hora: HORA, actualizado: CACHE.actualizado, abiertas: abiertas.length, nuevas7: nuevas7.length, cierran7: cierranPronto.length, fichas: conv.length, enCache: Object.keys(CACHE.conv).length }));
 write('/datos/cache.json', JSON.stringify(CACHE)); // copia para la siguiente actualización (ver src/fetch.mjs)
+// Datos ya resueltos (plazo, ámbito, organismo, para quién) para la herramienta de Apify (apify/), que solo filtra.
+const nombreCcaa = Object.fromEntries(CCAA.map((a) => [a.c, a.n]));
+const nombreProv = Object.fromEntries(PROVINCIAS.map((p) => [p.c, p.n]));
+write('/datos/api/convocatorias.json', JSON.stringify({
+  hoy: HOY, actualizado: CACHE.actualizado, fuente: 'Base de Datos Nacional de Subvenciones (BDNS), Intervención General de la Administración del Estado',
+  convocatorias: conv.map((c) => ({
+    id: c.id, titulo: c.titulo, tituloCompleto: c.t, organismo: c.org, nivel: NIVEL[c.o[0]] || c.o[0] || null, tipo: c.tipo || null,
+    estado: c.e.k, inicio: c.e.desde || c.ini || null, fin: c.e.hasta || null, finEstimado: c.e.k === 'estimada' || !!c.e.estimado,
+    textoInicio: c.ti, textoFin: c.tf, publicada: c.f, presupuesto: c.p, beneficiarios: c.b, publicos: c.pub.map((p) => p.id),
+    tema: c.tema ? c.tema.n : null, finalidad: c.fin || null, sectores: c.sec,
+    nacional: c.a.nacional, ccaa: c.a.ccaa.map((x) => nombreCcaa[x] || x), provincias: c.a.prov.map((x) => nombreProv[x] || x), regiones: c.reg,
+    fondosUE: c.fondos, mrr: c.mrr, sede: c.sede, bases: c.ub, basesTexto: c.db || null,
+    bdns: BDNS_WEB(c.id), ficha: SITE + u(c.path),
+    documentos: (c.docs || []).map(([id, desc, fic, pub]) => ({ nombre: desc || fic, fichero: fic, publicado: pub || null, url: BDNS_DOC(id) })),
+  })),
+}));
 write('/datos/indexnow-diario.json', JSON.stringify([SITE + u('/'), SITE + u('/nuevas/'), SITE + u('/cierran-pronto/'), ...conv.filter((c) => c.f >= restaDias(HOY, 2)).map((c) => SITE + u(c.path))].slice(0, 9000)));
 
 // ---------------------------------------------------------------- portada

@@ -1,0 +1,11 @@
+{
+    "actorSpecification": 1,
+    "name": "spain-grants-subsidies",
+    "title": "Spain Grants & Subsidies – Open Calls (BDNS)",
+    "description": "Every public grant and subsidy call in Spain from the official national database (BDNS): status, deadline, budget, region, who can apply and official links. Filter by keyword, region, audience and topic.",
+    "version": "1.0",
+    "buildTag": "latest",
+    "input": "./input_schema.json",
+    "dockerfile": "../Dockerfile",
+    "storages": { "dataset": "./dataset_schema.json" }
+}

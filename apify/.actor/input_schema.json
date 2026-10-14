@@ -1,0 +1,343 @@
+{
+    "title": "Spain Public Grants & Subsidies",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "keywords": {
+            "title": "Keywords",
+            "type": "array",
+            "editor": "stringList",
+            "description": "Keep grants whose title, organization, topic, sectors or beneficiaries contain ANY of these keywords (in Spanish, accents ignored). A keyword with several words needs all of them, e.g. \"eficiencia energética\", \"digitalización\", \"contratación\", \"alquiler\".",
+            "prefill": [
+                "digitalización"
+            ],
+            "default": []
+        },
+        "excludeKeywords": {
+            "title": "Exclude keywords",
+            "type": "array",
+            "editor": "stringList",
+            "description": "Drop grants that contain any of these keywords.",
+            "default": []
+        },
+        "statuses": {
+            "title": "Status",
+            "type": "array",
+            "editor": "select",
+            "description": "Which calls to return. By default, everything you can still apply for: open (official or estimated deadline), deadline to be confirmed, and upcoming.",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "open",
+                    "openEstimatedDeadline",
+                    "checkDeadline",
+                    "upcoming",
+                    "closed"
+                ],
+                "enumTitles": [
+                    "Open (official deadline)",
+                    "Open (estimated deadline)",
+                    "Deadline to be confirmed",
+                    "Upcoming (not open yet)",
+                    "Closed"
+                ]
+            },
+            "default": [
+                "open",
+                "openEstimatedDeadline",
+                "checkDeadline",
+                "upcoming"
+            ]
+        },
+        "audiences": {
+            "title": "Who can apply",
+            "type": "array",
+            "editor": "select",
+            "description": "Keep grants open to at least one of these groups.",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "smesAndSelfEmployed",
+                    "individuals",
+                    "nonProfits",
+                    "largeCompanies"
+                ],
+                "enumTitles": [
+                    "SMEs and self-employed (autónomos)",
+                    "Individuals and families",
+                    "Associations, foundations, NGOs and other non-profits",
+                    "Large companies"
+                ]
+            },
+            "default": []
+        },
+        "regions": {
+            "title": "Regions (comunidades autónomas)",
+            "type": "array",
+            "editor": "select",
+            "description": "Grants for these regions, including those of their provinces and town councils.",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "Andalucía",
+                    "Aragón",
+                    "Asturias",
+                    "Canarias",
+                    "Cantabria",
+                    "Castilla y León",
+                    "Castilla-La Mancha",
+                    "Cataluña",
+                    "Ceuta",
+                    "Comunidad de Madrid",
+                    "Comunitat Valenciana",
+                    "Extremadura",
+                    "Galicia",
+                    "Illes Balears",
+                    "La Rioja",
+                    "Melilla",
+                    "Navarra",
+                    "País Vasco",
+                    "Región de Murcia"
+                ],
+                "enumTitles": [
+                    "Andalusia – Andalucía",
+                    "Aragon – Aragón",
+                    "Asturias",
+                    "Canary Islands – Canarias",
+                    "Cantabria",
+                    "Castile and León – Castilla y León",
+                    "Castilla-La Mancha",
+                    "Catalonia – Cataluña",
+                    "Ceuta",
+                    "Madrid (region) – Comunidad de Madrid",
+                    "Valencian Community – Comunitat Valenciana",
+                    "Extremadura",
+                    "Galicia",
+                    "Balearic Islands – Illes Balears",
+                    "La Rioja",
+                    "Melilla",
+                    "Navarre – Navarra",
+                    "Basque Country – País Vasco",
+                    "Murcia (region) – Región de Murcia"
+                ]
+            },
+            "default": []
+        },
+        "provinces": {
+            "title": "Provinces",
+            "type": "array",
+            "editor": "select",
+            "description": "Grants for these provinces, including region-wide calls that cover them.",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "A Coruña",
+                    "Álava",
+                    "Albacete",
+                    "Alicante",
+                    "Almería",
+                    "Asturias",
+                    "Ávila",
+                    "Badajoz",
+                    "Barcelona",
+                    "Bizkaia",
+                    "Burgos",
+                    "Cáceres",
+                    "Cádiz",
+                    "Cantabria",
+                    "Castellón",
+                    "Ceuta",
+                    "Ciudad Real",
+                    "Córdoba",
+                    "Cuenca",
+                    "Gipuzkoa",
+                    "Girona",
+                    "Granada",
+                    "Guadalajara",
+                    "Huelva",
+                    "Huesca",
+                    "Illes Balears",
+                    "Jaén",
+                    "La Rioja",
+                    "Las Palmas",
+                    "León",
+                    "Lleida",
+                    "Lugo",
+                    "Madrid",
+                    "Málaga",
+                    "Melilla",
+                    "Murcia",
+                    "Navarra",
+                    "Ourense",
+                    "Palencia",
+                    "Pontevedra",
+                    "Salamanca",
+                    "Santa Cruz de Tenerife",
+                    "Segovia",
+                    "Sevilla",
+                    "Soria",
+                    "Tarragona",
+                    "Teruel",
+                    "Toledo",
+                    "Valencia",
+                    "Valladolid",
+                    "Zamora",
+                    "Zaragoza"
+                ]
+            },
+            "default": []
+        },
+        "includeNationwide": {
+            "title": "Include nationwide grants",
+            "type": "boolean",
+            "description": "When filtering by region or province, also include grants open to the whole of Spain.",
+            "default": true
+        },
+        "administrationLevels": {
+            "title": "Granting administration",
+            "type": "array",
+            "editor": "select",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "state",
+                    "region",
+                    "local",
+                    "otherPublicBody"
+                ],
+                "enumTitles": [
+                    "Central Government",
+                    "Regional government",
+                    "Local (town and provincial councils, islands)",
+                    "Other public bodies (universities, chambers, foundations…)"
+                ]
+            },
+            "default": []
+        },
+        "topics": {
+            "title": "Topics",
+            "type": "array",
+            "editor": "select",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "agriculture",
+                    "culture",
+                    "defence",
+                    "education",
+                    "employment",
+                    "environment",
+                    "health",
+                    "housing",
+                    "industryEnergy",
+                    "infrastructure",
+                    "internationalCooperation",
+                    "justice",
+                    "otherBenefits",
+                    "otherEconomic",
+                    "publicSafety",
+                    "research",
+                    "socialServices",
+                    "sport",
+                    "tradeTourismSmes",
+                    "transport",
+                    "unemployment"
+                ],
+                "enumTitles": [
+                    "Agriculture, fisheries and food",
+                    "Culture",
+                    "Defence",
+                    "Education and scholarships",
+                    "Employment and hiring",
+                    "Environment",
+                    "Health",
+                    "Housing and construction",
+                    "Industry and energy",
+                    "Infrastructure",
+                    "International cooperation",
+                    "Justice",
+                    "Other economic benefits",
+                    "Other economic measures",
+                    "Public safety",
+                    "Research, development and innovation",
+                    "Social services",
+                    "Sport",
+                    "Trade, tourism and SMEs",
+                    "Transport",
+                    "Unemployment"
+                ]
+            },
+            "default": []
+        },
+        "organization": {
+            "title": "Granting organization contains",
+            "type": "string",
+            "editor": "textfield",
+            "description": "e.g. \"Ayuntamiento de Madrid\", \"Diputación\", \"Ministerio de Industria\"."
+        },
+        "publishedFrom": {
+            "title": "Published since",
+            "type": "string",
+            "editor": "datepicker",
+            "description": "Only calls registered on or after this date (YYYY-MM-DD)."
+        },
+        "publishedInLastDays": {
+            "title": "Published in the last days",
+            "type": "integer",
+            "minimum": 0,
+            "description": "Only calls registered in the last N days. Use 1 in a daily schedule to get alerts of new grants. 0 = no limit.",
+            "default": 0
+        },
+        "deadlineWithinDays": {
+            "title": "Closing within (days)",
+            "type": "integer",
+            "minimum": 0,
+            "description": "Only calls with a known deadline in the next N days. 0 = no limit.",
+            "default": 0
+        },
+        "minBudgetEUR": {
+            "title": "Minimum budget (EUR)",
+            "type": "integer",
+            "minimum": 0,
+            "description": "Only calls with at least this total budget.",
+            "default": 0
+        },
+        "euFundedOnly": {
+            "title": "EU-funded only",
+            "type": "boolean",
+            "description": "Only calls co-financed by EU funds (FEDER, FSE+, FEADER, Recovery Plan…).",
+            "default": false
+        },
+        "sortBy": {
+            "title": "Sort by",
+            "type": "string",
+            "editor": "select",
+            "enum": [
+                "newest",
+                "deadline",
+                "budget",
+                "none"
+            ],
+            "enumTitles": [
+                "Newest first",
+                "Closing soonest first",
+                "Largest budget first",
+                "No sorting"
+            ],
+            "default": "newest"
+        },
+        "maxResults": {
+            "title": "Maximum results",
+            "type": "integer",
+            "minimum": 0,
+            "description": "0 = all matching grants.",
+            "default": 0
+        },
+        "includeDocuments": {
+            "title": "Include documents",
+            "type": "boolean",
+            "description": "Add the list of official documents (call text, extracts, forms) with download links.",
+            "default": true
+        }
+    }
+}

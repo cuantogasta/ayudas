@@ -1,0 +1,76 @@
+{
+    "actorSpecification": 1,
+    "views": {
+        "overview": {
+            "title": "Overview",
+            "transformation": {
+                "fields": [
+                    "bdnsCode",
+                    "title",
+                    "organization",
+                    "status",
+                    "applicationEnd",
+                    "daysLeft",
+                    "budgetEUR",
+                    "audiences",
+                    "topic",
+                    "regions",
+                    "provinces",
+                    "pageUrl",
+                    "officialUrl"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "bdnsCode": {
+                        "label": "BDNS code"
+                    },
+                    "title": {
+                        "label": "Title"
+                    },
+                    "organization": {
+                        "label": "Organization"
+                    },
+                    "status": {
+                        "label": "Status"
+                    },
+                    "applicationEnd": {
+                        "label": "Deadline"
+                    },
+                    "daysLeft": {
+                        "label": "Days left",
+                        "format": "number"
+                    },
+                    "budgetEUR": {
+                        "label": "Budget (EUR)",
+                        "format": "number"
+                    },
+                    "audiences": {
+                        "label": "Who can apply",
+                        "format": "array"
+                    },
+                    "topic": {
+                        "label": "Topic"
+                    },
+                    "regions": {
+                        "label": "Regions",
+                        "format": "array"
+                    },
+                    "provinces": {
+                        "label": "Provinces",
+                        "format": "array"
+                    },
+                    "pageUrl": {
+                        "label": "Details",
+                        "format": "link"
+                    },
+                    "officialUrl": {
+                        "label": "BDNS",
+                        "format": "link"
+                    }
+                }
+            }
+        }
+    }
+}

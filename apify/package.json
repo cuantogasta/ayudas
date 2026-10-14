@@ -1,0 +1,14 @@
+{
+    "name": "spain-grants-subsidies",
+    "version": "1.0.0",
+    "description": "Every public grant and subsidy call in Spain (BDNS) with status, deadline, region and who can apply.",
+    "type": "module",
+    "main": "src/main.js",
+    "scripts": {
+        "start": "node src/main.js"
+    },
+    "dependencies": {
+        "apify": "^3.2.6"
+    },
+    "license": "MIT"
+}
