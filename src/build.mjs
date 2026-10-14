@@ -295,7 +295,7 @@ ${faq.html}`;
     desc: `${fmt(abiertas.length)} ayudas y subvenciones abiertas hoy para autónomos, empresas, particulares y asociaciones. Plazos, cuantías y requisitos con datos oficiales de la BDNS, actualizados cada día.`,
     p: '/', body,
     jsonld: [{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'CuántoGasta Ayudas', url: SITE + u('/'), inLanguage: 'es-ES', publisher: ORG }, faq.ld,
-      { '@context': 'https://schema.org', '@type': 'Dataset', name: 'Ayudas y subvenciones abiertas en España', description: 'Convocatorias de ayudas y subvenciones públicas abiertas, con plazo, beneficiarios, presupuesto y ámbito geográfico.', url: SITE + u('/'), creator: ORG, isBasedOn: 'https://www.infosubvenciones.es/', spatialCoverage: 'España', dateModified: FECHA_DATOS }],
+      { '@context': 'https://schema.org', '@type': 'Dataset', name: 'Ayudas y subvenciones abiertas en España', description: 'Convocatorias de ayudas y subvenciones públicas abiertas, con plazo, beneficiarios, presupuesto y ámbito geográfico.', url: SITE + u('/'), creator: ORG, license: 'https://creativecommons.org/licenses/by/4.0/', isBasedOn: 'https://www.infosubvenciones.es/', spatialCoverage: 'España', dateModified: FECHA_DATOS }],
   }), { priority: '1.0' });
 }
 
