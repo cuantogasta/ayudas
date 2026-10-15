@@ -8,9 +8,6 @@
             "type": "array",
             "editor": "stringList",
             "description": "Keep grants whose title, organization, topic, sectors or beneficiaries contain ANY of these keywords (in Spanish, accents ignored). A keyword with several words needs all of them, e.g. \"eficiencia energética\", \"digitalización\", \"contratación\", \"alquiler\".",
-            "prefill": [
-                "digitalización"
-            ],
             "default": []
         },
         "excludeKeywords": {
@@ -69,6 +66,9 @@
                     "Large companies"
                 ]
             },
+            "prefill": [
+                "smesAndSelfEmployed"
+            ],
             "default": []
         },
         "regions": {
@@ -314,6 +314,7 @@
             "title": "Sort by",
             "type": "string",
             "editor": "select",
+            "description": "Order of the results.",
             "enum": [
                 "newest",
                 "deadline",
@@ -326,14 +327,15 @@
                 "Largest budget first",
                 "No sorting"
             ],
-            "default": "newest",
-            "description": "Order of the results."
+            "prefill": "deadline",
+            "default": "newest"
         },
         "maxResults": {
             "title": "Maximum results",
             "type": "integer",
             "minimum": 0,
             "description": "0 = all matching grants.",
+            "prefill": 100,
             "default": 0
         },
         "includeDocuments": {
