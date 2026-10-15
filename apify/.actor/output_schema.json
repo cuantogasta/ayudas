@@ -1,0 +1,18 @@
+{
+    "actorOutputSchemaVersion": 1,
+    "title": "Spain Grants & Subsidies output",
+    "properties": {
+        "grants": {
+            "type": "string",
+            "title": "Grants",
+            "description": "One record per grant call with status, deadline, budget, region and who can apply.",
+            "template": "{{links.apiDefaultDatasetUrl}}/items?view=overview"
+        },
+        "summary": {
+            "type": "string",
+            "title": "Summary",
+            "description": "Number of grants, total budget, grants closing in the next 7 days and counts by status, audience, topic, administration and region.",
+            "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/SUMMARY"
+        }
+    }
+}
