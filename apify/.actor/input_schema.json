@@ -197,6 +197,7 @@
             "title": "Granting administration",
             "type": "array",
             "editor": "select",
+            "description": "Keep grants from these levels of administration.",
             "items": {
                 "type": "string",
                 "enum": [
@@ -218,6 +219,7 @@
             "title": "Topics",
             "type": "array",
             "editor": "select",
+            "description": "Keep grants about these topics (as classified by the BDNS).",
             "items": {
                 "type": "string",
                 "enum": [
@@ -324,7 +326,8 @@
                 "Largest budget first",
                 "No sorting"
             ],
-            "default": "newest"
+            "default": "newest",
+            "description": "Order of the results."
         },
         "maxResults": {
             "title": "Maximum results",
